@@ -39,9 +39,9 @@ pipeline {
         }  
     }
     post {
-        always {
+        //always {
             //cleanWs() // Limpiar el espacio de trabajo después de cada ejecución
-        }
+        //}
         failure {
             script {
                 def fullDisplayName = currentBuild.fullDisplayName // Obtener el nombre completo de la compilación

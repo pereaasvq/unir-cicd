@@ -18,8 +18,9 @@ pipeline {
                 // Archivar el archivo de cobertura y la carpeta de cobertura
                 //archiveArtifacts artifacts: 'results/coverage.xml'
                 //archiveArtifacts artifacts: 'results/coverage/**'
-                publishCoverage adapters: [cobertura('results/coverage.xml')]
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'results/coverage', reportFiles: 'index.html', reportName: 'Coverage Report'])
+                recordCoverage(tools: [[parser: 'JUNIT']], id: 'junit', name: 'JUnit Coverage', sourceCodeRetention: 'EVERY_BUILD', qualityGates: [
+                [threshold: 60.0, metric: 'LINE', baseline: 'PROJECT', unstable: true],
+                [threshold: 60.0, metric: 'BRANCH', baseline: 'PROJECT', unstable: true]])
             }
         }
         stage('API tests') {

@@ -18,7 +18,7 @@ pipeline {
                 // Archivar el archivo de cobertura y la carpeta de cobertura
                 //archiveArtifacts artifacts: 'results/coverage.xml'
                 //archiveArtifacts artifacts: 'results/coverage/**'
-                recordCoverage(tools: [[parser: 'JACOCO', pattern: 'results/coverage.xml']], sourceCodeRetention: 'EVERY_BUILD')
+                recordCoverage(tools: [[parser: 'COBERTURA', pattern: 'results/coverage.xml']], sourceCodeRetention: 'EVERY_BUILD')
             }
         }
         stage('API tests') {

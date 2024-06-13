@@ -16,8 +16,10 @@ pipeline {
                 archiveArtifacts artifacts: 'results/unit_result.xml'
                 junit 'results/unit_result.xml'
                 // Archivar el archivo de cobertura y la carpeta de cobertura
-                archiveArtifacts artifacts: 'results/coverage.xml'
-                archiveArtifacts artifacts: 'results/coverage/**'
+                //archiveArtifacts artifacts: 'results/coverage.xml'
+                //archiveArtifacts artifacts: 'results/coverage/**'
+                publishCoverage adapters: [cobertura('results/coverage.xml')]
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'results/coverage', reportFiles: 'index.html', reportName: 'Coverage Report'])
             }
         }
         stage('API tests') {

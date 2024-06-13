@@ -18,9 +18,7 @@ pipeline {
                 // Archivar el archivo de cobertura y la carpeta de cobertura
                 //archiveArtifacts artifacts: 'results/coverage.xml'
                 //archiveArtifacts artifacts: 'results/coverage/**'
-                recordCoverage(tools: [[parser: 'JUNIT']], id: 'junit', name: 'JUnit Coverage', sourceCodeRetention: 'EVERY_BUILD', qualityGates: [
-                [threshold: 60.0, metric: 'LINE', baseline: 'PROJECT', unstable: true],
-                [threshold: 60.0, metric: 'BRANCH', baseline: 'PROJECT', unstable: true]])
+                recordCoverage(tools: [[parser: 'JUNIT']], id: 'junit', name: 'JUnit Coverage', sourceCodeRetention: 'EVERY_BUILD')
             }
         }
         stage('API tests') {

@@ -40,7 +40,7 @@ pipeline {
     }
     post {
         always {
-            cleanWs() // Limpiar el espacio de trabajo después de cada ejecución
+            \\cleanWs() // Limpiar el espacio de trabajo después de cada ejecución
         }
         failure {
             script {
